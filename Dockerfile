@@ -5,7 +5,7 @@ ENV LANG en_US.UTF-8
 RUN echo "server {  \
                       listen       80; \
                       location   /jeecgboot/ { \
-                      proxy_pass              http://172.17.0.1:8083/jeecg-boot/; \
+                      proxy_pass              http://host.docker.internal:8083/jeecg-boot/; \
                       proxy_redirect          off; \
                       proxy_set_header        Host jeecg-boot-system; \
                       proxy_set_header        X-Real-IP \$remote_addr; \
