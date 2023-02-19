@@ -38,6 +38,17 @@
          <a-button v-else :ghost="true" type="primary" preIcon="ant-design:download-outlined" size="small" @click="downloadFile(text)">下载</a-button>
       </template>
     </BasicTable>
+    <BasicTable
+      title="基础示例"
+      titleHelpMessage="温馨提醒"
+      :columns="columns"
+      :dataSource="data"
+      :pagination="{ pageSize: 20 }"
+    >
+      <template #toolbar>
+        <a-button type="primary"> 操作按钮 </a-button>
+      </template>
+    </BasicTable>
    <!--子表表格tab-->
     <a-tabs defaultActiveKey="1">
         <a-tab-pane tab="订单商品" key="1" >
@@ -63,6 +74,10 @@
   import {columns, searchFormSchema} from './CesOrderMain.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './CesOrderMain.api';
   import {downloadFile} from '/@/utils/common/renderUtils';
+  import { getBasicColumns, getBasicData } from './tableData';
+
+  const columns = getBasicColumns();
+  const data = getBasicData();
   //注册model
   const [registerModal, {openModal}] = useModal();
    //注册table数据
